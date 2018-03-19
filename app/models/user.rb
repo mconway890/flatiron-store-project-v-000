@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :carts
-  has_one :current_cart, class_name: 'Cart'
+  has_one :current_cart, class_name: "Cart"
 end

@@ -2,7 +2,6 @@ class CartsController < ApplicationController
     before_action :find_cart
 
     def show
-        @cart = Cart.find(params[:id])
     end
     
     def checkout
