@@ -3,5 +3,6 @@
 <ul>
 <% @category.items.each do |item| %>
     <li><%= link_to item.title, item_path(item) %></li>
+    <%= button_to "Add to Cart", line_items_path(item_id: item) %>
 <% end %>
 </ul>
