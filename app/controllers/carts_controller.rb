@@ -1,19 +1,14 @@
 class CartsController < ApplicationController
-    before_action :find_cart
 
     def show
+        @user = User.find(params[:id])
+        @current_cart = @user.current_cart
     end
     
     def checkout
-        @cart.checkout
-        current_user.current_cart = nil
-        redirect_to cart_path(@cart)
-    end
-    
-    private
-    
-    def find_cart
-       @cart = Cart.find_by(id: params[:id]) 
+        checkout_cart = current_cart
+        current_cart.init_checkout
+        redirect_to cart_path(checkout_cart)
     end
 
 end

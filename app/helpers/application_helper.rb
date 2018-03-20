@@ -1,5 +1,7 @@
 module ApplicationHelper
-    def number_to_currency(price)
-         "$#{price.to_f/100}"
+    def current_cart
+        if current_user 
+            current_user.current_cart
+        end
     end
 end

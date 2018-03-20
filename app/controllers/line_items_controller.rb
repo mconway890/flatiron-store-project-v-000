@@ -1,12 +1,11 @@
 class LineItemsController < ApplicationController
     def create
-        if cart = current_user.current_cart
-            cart.add_item(params[:item_id])
-        else
-            cart = current_user.carts.create
-            cart.add_item(params[:item_id])
-        end
-        cart.save
-        redirect_to cart_path(cart)
+      if current_user
+        current_user.create_current_cart unless current_user.current_cart
+        current_user.current_cart.add_item(params[:item_id]).save
+        redirect_to cart_path(current_cart)
+      else
+        redirect_to root_path, notice: "Please Log In"
+      end
     end
 end
