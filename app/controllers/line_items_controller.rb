@@ -5,7 +5,7 @@ class LineItemsController < ApplicationController
         current_user.current_cart.add_item(params[:item_id]).save
         redirect_to cart_path(current_cart)
       else
-        redirect_to root_path, notice: "Please Log In"
+        redirect_to store_path, notice: "Please Log In"
       end
     end
 end
