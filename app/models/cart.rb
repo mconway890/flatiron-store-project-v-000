@@ -4,7 +4,7 @@ class Cart < ActiveRecord::Base
     has_many :items, through: :line_items
     
     def total
-        line_items.map{|x| x.item.price * x.quantity}.inject(:+)
+        line_items.collect{|i| i.item.price * i.quantity}.inject(:+)
     end
     
     def add_item(item_id)
